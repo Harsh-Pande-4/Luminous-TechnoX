@@ -1,0 +1,20 @@
+from flask import Flask, jsonify
+import random
+import datetime
+
+app = Flask(__name__)
+
+# Dummy tariff data generator
+def get_tariff_data():
+    current_tariff = round(random.uniform(0.05, 0.20), 2)
+    forecasted_tariff = current_tariff + 0.02  # Example: Slight increase in forecast
+    time_now = datetime.datetime.now().strftime("%H:%M")
+    return {"time": time_now, "current_tariff": current_tariff, "forecasted_tariff": forecasted_tariff}
+
+@app.route('/tariff', methods=['GET'])
+def tariff():
+    data = get_tariff_data()
+    return jsonify(data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
