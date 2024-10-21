@@ -1,0 +1,18 @@
+from flask import Flask, jsonify
+import random
+
+app = Flask(__name__)
+
+# Dummy energy consumption data generator
+def get_energy_data():
+    consumption = round(random.uniform(0.8, 2.5), 2)  # kWh consumption values
+    cost = consumption * 0.15  # Example cost calculation
+    return {"consumption": consumption, "cost": cost}
+
+@app.route('/energy', methods=['GET'])
+def energy():
+    data = get_energy_data()
+    return jsonify(data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
