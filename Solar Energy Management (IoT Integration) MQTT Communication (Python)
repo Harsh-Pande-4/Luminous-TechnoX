@@ -1,0 +1,14 @@
+import paho.mqtt.client as mqtt
+
+def on_message(client, userdata, message):
+    print(f"Received message: {message.payload.decode('utf-8')}")
+
+client = mqtt.Client()
+client.connect("mqtt_broker_address")
+
+client.subscribe("solar/energy")
+client.on_message = on_message
+client.loop_start()
+
+# Simulating real-time solar data
+client.publish("solar/energy", "Solar Production: 3.5 kWh, Battery: 80% full")
