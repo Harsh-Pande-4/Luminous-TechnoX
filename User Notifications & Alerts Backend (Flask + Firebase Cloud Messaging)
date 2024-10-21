@@ -1,0 +1,16 @@
+from flask import Flask
+from pyfcm import FCMNotification
+
+app = Flask(__name__)
+
+push_service = FCMNotification(api_key="YOUR_FIREBASE_SERVER_KEY")
+
+@app.route('/send_notification', methods=['GET'])
+def send_notification():
+    message_title = "High Tariff Alert"
+    message_body = "Tariffs are high now, consider using stored solar energy."
+    result = push_service.notify_single_device(registration_id="YOUR_DEVICE_TOKEN", message_title=message_title, message_body=message_body)
+    return str(result)
+
+if __name__ == '__main__':
+    app.run(debug=True)
