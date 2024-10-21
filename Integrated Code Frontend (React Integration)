@@ -1,0 +1,42 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Line } from 'react-chartjs-2';
+
+const Dashboard = () => {
+  const [tariffData, setTariffData] = useState({});
+  const [energyData, setEnergyData] = useState({});
+
+  useEffect(() => {
+    axios.get('/tariff').then((response) => {
+      setTariffData(response.data);
+    });
+
+    axios.get('/energy').then((response) => {
+      setEnergyData(response.data);
+    });
+  }, []);
+
+  const data = {
+    labels: ['Current', 'Forecasted'],
+    datasets: [
+      {
+        label: 'Tariff Rates',
+        data: [tariffData.current_tariff, tariffData.forecasted_tariff],
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  return (
+    <div>
+      <h2>Energy Dashboard</h2>
+      <p>Tariff: ${tariffData.current_tariff}</p>
+      <p>Energy Consumption: {energyData.consumption} kWh</p>
+      <p>Energy Cost: ${energyData.cost}</p>
+      <Line data={data} />
+    </div>
+  );
+};
+
+export default Dashboard;
