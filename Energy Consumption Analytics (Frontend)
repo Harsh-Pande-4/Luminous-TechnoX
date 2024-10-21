@@ -1,0 +1,22 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const EnergyAnalytics = () => {
+  const [energyData, setEnergyData] = useState({});
+
+  useEffect(() => {
+    axios.get('/energy').then((response) => {
+      setEnergyData(response.data);
+    });
+  }, []);
+
+  return (
+    <div>
+      <h2>Energy Consumption</h2>
+      <p>Consumption: {energyData.consumption} kWh</p>
+      <p>Cost: ${energyData.cost}</p>
+    </div>
+  );
+};
+
+export default EnergyAnalytics;
