@@ -1,0 +1,27 @@
+import numpy as np
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+
+# Dummy data for historical consumption and tariffs
+# X represents features like [tariff, consumption], y is the target future consumption
+X = np.array([[0.15, 100], [0.12, 80], [0.18, 120], [0.16, 110], [0.20, 130]])
+y = np.array([95, 85, 110, 100, 120])
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initialize the Random Forest Regressor
+model = RandomForestRegressor(n_estimators=100, random_state=42)
+
+# Train the model on the training data
+model.fit(X_train, y_train)
+
+# Predict future consumption on the test data (you can also use real-world data here)
+y_pred = model.predict(X_test)
+
+# Example prediction for new tariff and consumption input
+future_tariff = np.array([[0.14, 90]])  # Example new tariff and consumption
+prediction = model.predict(future_tariff)
+
+# Output results
+print("Predicted future consumption for the new tariff and consumption input:", prediction)
