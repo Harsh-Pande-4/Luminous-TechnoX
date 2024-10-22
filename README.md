@@ -1,1 +1,59 @@
 # Luminous-TechnoX
+
+1.	Real-Time Tariff Monitoring - This part fetches and processes real-time tariff data.
+
+Backend - Python/Flask
+Explanation: Creates an API to fetch dummy real-time tariffs and forecasts.
+Deployment: Deploy this Flask app on Heroku or AWS Lambda.
+
+2.	Energy Consumption Analytics – This part analyses energy consumption patterns and costs.
+
+Backend - Python/Flask
+Explanation: Analysis of energy consumption using Python.
+Deployment: Deploy this on Heroku.
+
+Frontend - React
+Explanation: This displays energy consumption data and costs on a web dashboard.
+Deployment: React app can be deployed on Netlify or Vercel.
+
+3.	Smart Scheduling of High-Energy Appliances—This part schedules the use of high-energy devices when electricity prices are low.
+
+Backend - Python/Flask
+Explanation: This code schedules appliance usage during optimal periods (e.g., low tariffs).
+Deployment: This Python code can be used with IoT devices to automate appliance usage.
+
+4.	Solar Energy Management (IoT Integration)—This part ensures the proper management of generated solar energy.
+
+Backend - MQTT Communication (Python)
+Explanation: This code uses MQTT for IoT communication between solar panels, batteries, and the backend.
+Deployment: This can be used with IoT devices or emulators.
+
+5.	Forecasting & Recommendations (Machine Learning)—This part predicts or forecasts the future energy consumption.
+
+Backend – Scikit-Learn (Python)
+Explanation: This code predicts future energy consumption using Random Forest Regression.
+Deployment: This can be deployed as a Flask API to serve predictions.
+
+6.	User Notifications & Alerts – This part sets a notification system to send real-time alerts about high tariffs, and solar battery status.
+
+Backend - Flask + Firebase Cloud Messaging
+Explanation: Sends notifications via Firebase Cloud Messaging.
+Deployment: Deploy this on Heroku.
+
+Frontend - React Notification Display
+Explanation: Displays notifications on the frontend.
+Deployment: React app can be deployed on Netlify.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
