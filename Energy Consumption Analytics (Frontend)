@@ -1,22 +1,80 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Line } from 'react-chartjs-2';
+import 'chart.js/auto';
+import './App.css';
 
-const EnergyAnalytics = () => {
-  const [energyData, setEnergyData] = useState({});
+const dummyData = {
+  dates: ['2024-10-20', '2024-10-21', '2024-10-22'],
+  times: ['00:00', '06:00', '12:00', '18:00', '23:59'],
+  consumption: [50, 70, 40, 80, 60],
+  cost: [10, 15, 7, 20, 12],
+};
+
+const App = () => {
+  const [data, setData] = useState({
+    labels: dummyData.times,
+    datasets: [],
+  });
+  const [selectedDate, setSelectedDate] = useState('2024-10-20');
+
+  const fetchData = () => {
+    const filteredConsumption = dummyData.consumption;
+    const filteredCost = dummyData.cost;
+
+    setData({
+      labels: dummyData.times,
+      datasets: [
+        {
+          label: 'Consumption (kWh)',
+          data: filteredConsumption,
+          borderColor: '#1E90FF',
+          backgroundColor: 'rgba(30, 144, 255, 0.5)',
+          fill: true,
+          tension: 0.4,
+        },
+        {
+          label: 'Cost ($)',
+          data: filteredCost,
+          borderColor: '#4682B4',
+          backgroundColor: 'rgba(70, 130, 180, 0.5)',
+          fill: true,
+          tension: 0.4,
+        },
+      ],
+    });
+  };
 
   useEffect(() => {
-    axios.get('/energy').then((response) => {
-      setEnergyData(response.data);
-    });
-  }, []);
+    fetchData();
+  }, [selectedDate]);
 
   return (
-    <div>
-      <h2>Energy Consumption</h2>
-      <p>Consumption: {energyData.consumption} kWh</p>
-      <p>Cost: ${energyData.cost}</p>
+    <div className="App">
+      <header>
+        <h1>Luminous Electricity Tracker</h1>
+        <p>Real-time electricity consumption and cost tracking</p>
+      </header>
+      <div className="controls">
+        <label htmlFor="date">Select Date: </label>
+        <select
+          id="date"
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+        >
+          {dummyData.dates.map((date) => (
+            <option key={date} value={date}>
+              {date}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="chart-container">
+        <Line data={data} />
+      </div>
     </div>
   );
 };
 
-export default EnergyAnalytics;
+export default App;
+
