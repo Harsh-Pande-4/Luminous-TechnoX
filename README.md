@@ -1,4 +1,5 @@
 # Luminous-TechnoX
+![image](https://github.com/user-attachments/assets/8925868e-51fd-400d-89c2-416353c34c8b)
 
 - **Real-Time Tariff Monitoring** - This part fetches and processes real-time tariff data.
   - Backend - Python/Flask
