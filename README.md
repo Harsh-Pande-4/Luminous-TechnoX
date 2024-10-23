@@ -2,6 +2,8 @@
 
 - **Problem Statement** - Develop a Time-of-Use (ToU) and Time-of-Day (ToD) based platform for solar energy optimization, focused on dynamic electricity pricing. The goal is to maximize savings for households and businesses with solar panels by shifting energy usage during cheaper tariffs and using stored solar energy during peak hours.
 
+- **Our Approach**
+
 ![image](https://github.com/user-attachments/assets/1e2a94b0-81f1-4d69-bf07-bd4bee24b70a)
 
 
