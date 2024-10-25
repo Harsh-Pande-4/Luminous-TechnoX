@@ -5,7 +5,8 @@
 
 **Our Approach:**
 
-![image](https://github.com/user-attachments/assets/bf698503-31b1-4844-9048-140fad2866b8)
+![image](https://github.com/user-attachments/assets/6c347d95-0594-476a-ab8d-96cafaf4367e)
+
 
 - **Real-Time Tariff Monitoring** - This part fetches and processes real-time tariff data.
   - Backend - Python/Flask
