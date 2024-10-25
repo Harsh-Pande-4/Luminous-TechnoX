@@ -1,7 +1,9 @@
 # Luminous-TechnoX
 **Problem Statement** - Develop a Time-of-Use (ToU) and Time-of-Day (ToD) based platform for solar energy optimization, focused on dynamic electricity pricing. The goal is to maximize savings for households and businesses with solar panels by shifting energy usage during cheaper tariffs and using stored solar energy during peak hours.
 
-**Our Approach**
+**Luminous Energy Management System deployment Link** - https://react-app-yzkb.vercel.app/
+
+**Our Approach:**
 
 ![image](https://github.com/user-attachments/assets/bf698503-31b1-4844-9048-140fad2866b8)
 
