@@ -15,7 +15,7 @@ import './App.css';
 // Register the necessary Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-// Sample data generation
+// Sample data generation based on the selected date
 const generateData = (numPoints) => {
   const labels = Array.from({ length: numPoints }, (_, i) => `${String(i).padStart(2, '0')}:00`);
   const consumptionData = Array.from({ length: numPoints }, () => Math.floor(Math.random() * 100) + 1);
@@ -27,10 +27,15 @@ const generateData = (numPoints) => {
 };
 
 const App = () => {
-  const [data, setData] = useState(generateData(12)); // Generate data for 12 hours
+  const [data, setData] = useState(generateData(12)); // Generate initial data for 12 hours
   const [lowCostNotification, setLowCostNotification] = useState(false);
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
   const [device, setDevice] = useState('Select Device');
+
+  // Update data whenever the date changes
+  useEffect(() => {
+    setData(generateData(12)); // Regenerate data for 12 hours when date changes
+  }, [date]);
 
   useEffect(() => {
     if (data.costData.some(cost => cost < 20) && !lowCostNotification) {
